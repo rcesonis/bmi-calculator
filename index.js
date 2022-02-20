@@ -8,8 +8,10 @@ const idealWeight = Math.round(idealBMI * heightInM * heightInM);
 const basalMetabolicRate = (10 * weightInKg) + (6.25 * (heightInM * 100)) - (5 * userAge);
 const calorieNumber = Math.round(basalMetabolicRate * 1.4);
 const weightToLose = weightInKg - idealWeight;
+const timeToIdealWeight = weightToLose / 0.5;
+const caloriesToConsume = calorieNumber - 500;
 console.log(weightToLose);
-// console.log(calorieNumber);
+console.log(timeToIdealWeight);
 
 
 
@@ -33,5 +35,14 @@ A BMI above 25 is considered overweight
 
 * Your ideal weight is ${idealWeight}
 * With a normal lifestyle you burn ${calorieNumber} calories a day
+
+****************
+DIET PLAN
+****************
+
+If you want to reach your ideal weight of ${idealWeight} kg:
+
+Eat ${caloriesToConsume} calories a day
+For ${timeToIdealWeight} weeks
 
             `);
