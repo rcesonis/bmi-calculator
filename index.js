@@ -19,18 +19,15 @@ const basalMetabolicRatebyGender = userGender ==='f' ? basalMetabolicRateBase -1
 
 
 //const calorieNumber = Math.round(basalMetabolicRate * 1.4);
-const calorieNumber = (isExcercising === 'yes') ? 1.6 * basalMetabolicRate : 1.4 * basalMetabolicRate;
+const calorieNumber = (isExcercising === 'yes') ? 1.6 * basalMetabolicRatebyGender : 1.4 * basalMetabolicRatebyGender;
 
 
+// Loose or gain weight:
 const weightToLose = weightInKg - idealWeight;
-const timeToIdealWeight = weightToLose / 0.5;
-const caloriesToConsume = calorieNumber - 500;
 
+const timeToIdealWeight = weightToLose > 0 ? weightToLose / 0.5 : Math.abs(weightToLose / 0.5);
 
-
-console.log(isExcercising);
-console.log(calorieNumber);
-
+const caloriesToConsume = weightToLose > 0 ? calorieNumber - 500 : calorieNumber + 500;
 
 
 console.log(`
