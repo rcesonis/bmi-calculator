@@ -1,17 +1,29 @@
-const weightInKg = parseInt(process.argv[2]);
-const heightInM = parseFloat(process.argv[3]);
-const userAge = parseInt(process.argv[4]);
+const weightInKg = parseInt(process.argv[2]); //User input
+const heightInM = parseFloat(process.argv[3]); //User input
+const userAge = parseInt(process.argv[4]); //User input
+const isExcercising = process.argv[5]; //User input
+
+// Calculated bmi with formula BMI = weight(kg) / (height(m) * height(m))
 const bmi = weightInKg / (heightInM * heightInM);
+
 const roundedBMI = Math.round(bmi);
 const idealBMI = 22.5;
 const idealWeight = Math.round(idealBMI * heightInM * heightInM);
 const basalMetabolicRate = (10 * weightInKg) + (6.25 * (heightInM * 100)) - (5 * userAge);
-const calorieNumber = Math.round(basalMetabolicRate * 1.4);
+
+
+//const calorieNumber = Math.round(basalMetabolicRate * 1.4);
+const calorieNumber = (isExcercising === 'yes') ? 1.6 * basalMetabolicRate : 1.4 * basalMetabolicRate;
+
+
 const weightToLose = weightInKg - idealWeight;
 const timeToIdealWeight = weightToLose / 0.5;
 const caloriesToConsume = calorieNumber - 500;
-console.log(weightToLose);
-console.log(timeToIdealWeight);
+
+
+
+console.log(isExcercising);
+console.log(calorieNumber);
 
 
 
