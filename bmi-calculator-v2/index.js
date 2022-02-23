@@ -1,6 +1,8 @@
 // Function to calculate BMI
 function calculateBmi(weight, height) {
-    console.log(`input to function ok? ${weight} and ${height}`);
+    // Bmi calculation using input data
+    const bmi = Math.round(weight / (height * height));
+    return bmi;
 }
 
 
@@ -22,10 +24,9 @@ function bmiCalculator() {
     // console.log(`Daily exercise: ${isExcercising}`);
     // console.log(`Gender: ${gender}`);
 
-    calculateBmi(82, 1.79);
+    const bmi = calculateBmi(82, 1.79);
+    
 }
-
-
 
 
 
