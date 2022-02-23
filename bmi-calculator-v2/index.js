@@ -6,8 +6,10 @@ function calculateBmi(weight, height) {
 }
 
 // Function to calculate BMR
-function calculateBMR(weight, height, userAge, gender) {
-    console.log(`input to function ok? ${weight}, ${height}, ${userAge}, ${gender}`);
+function calculateBMR(weight, height, age, gender) {
+    const basalMetabolicRateBase = 10 * weight + 6.25 * (height * 100) - 5 * age;
+    const basalMetabolicRatebyGender = gender === "f" ? basalMetabolicRateBase - 150 : basalMetabolicRateBase + 50;
+    return basalMetabolicRatebyGender;
 }
 
 
@@ -28,8 +30,9 @@ function bmiCalculator() {
     // console.log(`Gender: ${gender}`);
 
     const bmi = calculateBmi(weightInKg, heightInM);
+    const BMR = calculateBMR(weightInKg, heightInM, userAge, gender);
     
-    calculateBMR(82, 1.77, 32, 'm')
+    calculateBMR(82, 1.79, 32, 'm')
     
 }
 
