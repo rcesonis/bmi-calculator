@@ -5,7 +5,10 @@ function calculateBmi(weight, height) {
     return bmi;
 }
 
-
+// Function to calculate BMR
+function calculateBMR(weight, height, userAge, gender) {
+    console.log(`input to function ok? ${weight}, ${height}, ${userAge}, ${gender}`);
+}
 
 
 
@@ -24,7 +27,9 @@ function bmiCalculator() {
     // console.log(`Daily exercise: ${isExcercising}`);
     // console.log(`Gender: ${gender}`);
 
-    const bmi = calculateBmi(82, 1.79);
+    const bmi = calculateBmi(weightInKg, heightInM);
+    
+    calculateBMR(82, 1.77, 32, 'm')
     
 }
 
