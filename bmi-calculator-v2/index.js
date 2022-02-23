@@ -1,8 +1,8 @@
 // Function to calculate BMI
 function calculateBmi(weight, height) {
     // Bmi calculation using input data
-    const bmi = Math.round(weight / (height * height));
-    return bmi;
+    const BMI = Math.round(weight / (height * height));
+    return BMI;
 }
 
 // Function to calculate BMR
@@ -19,11 +19,62 @@ function dailyCalories(exercising, bmr) {
 }
 
 // Function to calculate ideal weight
-function idealWeight(idealbmi, height) {
+function calculateIdealWeight(idealbmi, height) {
     const idealWeight = Math.round(idealbmi * height * height);
     return idealWeight; 
 }
 
+// Function to calculate weight to lose
+function calculateWeightToLose(weight, idealweight) {
+    const weightToLose = weight - idealweight;
+    return weightToLose;
+}
+
+// function to calculate time to ideal weight
+function calculateDietWeeks(weightlose) {
+    const dietWeeks = weightlose > 0 ? weightlose / 0.5 : Math.abs(weightlose / 0.5);
+    return dietWeeks;
+}
+
+// function to calculate calories
+function calculateDietCalories(weightlose, calorienumber) {
+    const dietCalories = weightlose > 0 ? calorienumber - 500 : calorienumber + 500;
+    return dietCalories;
+}   
+
+// function for printing result
+function printResult(height, weight, bmi, idealweight, calorienumber, dietcalories, timetoidealweight) {
+    console.log(`
+    **************
+    BMI CALCULATOR
+    **************
+
+    height: ${height}
+    weight: ${weight}
+
+    ****************
+    FACING THE FACTS
+    ****************
+
+
+    * Your BMI is ${bmi}
+
+    A BMI under 18.5 is considered underweight
+    A BMI above 25 is considered overweight
+
+    * Your ideal weight is ${idealweight}
+    * With a normal lifestyle you burn ${calorienumber} calories a day
+
+    ****************
+    DIET PLAN
+    ****************
+
+    If you want to reach your ideal weight of ${idealweight} kg:
+
+    Eat ${dietcalories} calories a day
+    For ${timetoidealweight} weeks    
+    `)
+}
 
 
 
@@ -38,15 +89,22 @@ function bmiCalculator() {
     const gender = process.argv[6];
     const idealBMI = 22.5; 
     
-    const bmi = calculateBmi(weightInKg, heightInM);
+    const BMI = calculateBmi(weightInKg, heightInM);
     const BMR = calculateBMR(weightInKg, heightInM, userAge, gender);
     const calorieNumber = dailyCalories(isExcercising, BMR);
-    const idealWeight = idealWeight(idealBMI, heightInM);
+    const idealWeight = calculateIdealWeight(idealBMI, heightInM);
+    const weightToLose = calculateWeightToLose(weightInKg, idealWeight);
+    const dietWeeks = calculateDietWeeks(weightToLose);
+    const dietCalories = calculateDietCalories(weightToLose, calorieNumber);    
     
-    
+    const result = printResult(heightInM,
+                               weightInKg,
+                               BMI,
+                               idealWeight,
+                               calorieNumber,
+                               dietCalories,
+                               dietWeeks);
+
 }
-
-calorieNumber()
-
 
 bmiCalculator();
