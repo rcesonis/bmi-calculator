@@ -12,6 +12,21 @@ function calculateBMR(weight, height, age, gender) {
     return basalMetabolicRatebyGender;
 }
 
+// Function to calculate daily calorie consumption
+function dailyCalories(exercising, bmr) {
+    const calorieNumber = exercising === "yes" ? 1.6 * bmr : 1.4 * bmr;
+    return calorieNumber;
+}
+
+// Function to calculate ideal weight
+function idealWeight(idealbmi, height) {
+    const idealWeight = Math.round(idealbmi * height * height);
+    return idealWeight; 
+}
+
+
+
+
 
 
 function bmiCalculator() {
@@ -21,22 +36,17 @@ function bmiCalculator() {
     const userAge = parseInt(process.argv[4]);
     const isExcercising = process.argv[5];
     const gender = process.argv[6];
+    const idealBMI = 22.5; 
     
-    // Testing user input
-    // console.log(`Weight: ${weightInKg}`);
-    // console.log(`Height: ${heightInM}`);
-    // console.log(`Age: ${userAge}`);
-    // console.log(`Daily exercise: ${isExcercising}`);
-    // console.log(`Gender: ${gender}`);
-
     const bmi = calculateBmi(weightInKg, heightInM);
     const BMR = calculateBMR(weightInKg, heightInM, userAge, gender);
+    const calorieNumber = dailyCalories(isExcercising, BMR);
+    const idealWeight = idealWeight(idealBMI, heightInM);
     
-    calculateBMR(82, 1.79, 32, 'm')
     
 }
 
-
+calorieNumber()
 
 
 bmiCalculator();
